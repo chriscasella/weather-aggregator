@@ -1,0 +1,1 @@
+wg_api_key = 'ae33dd163de485d3';
