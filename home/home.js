@@ -3,9 +3,10 @@ app.controller('HomeController', ['$scope', '$rootScope', function ($scope, $roo
     $rootScope.zip = null;
 
     this.headerAnime = anime({
-        targets: ".header",
+        targets: ".zip-header",
         easing: 'easeInOutQuart',
-        translateY: 250
+        translateY: 250,
+        opacity: 1
     });
 
     this.labelAnime = anime({
@@ -16,6 +17,12 @@ app.controller('HomeController', ['$scope', '$rootScope', function ($scope, $roo
 
     this.zipInputAnime = anime({
         targets: '.zip-input',
+        easing: 'easeInOutQuart',
+        opacity: 1
+    });
+
+    this.zipSubmitAnime = anime({
+        targets: '#zip-submit',
         easing: 'easeInOutQuart',
         opacity: 1
     });

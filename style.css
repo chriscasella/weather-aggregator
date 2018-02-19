@@ -7,3 +7,11 @@
     margin-left: 200px;
     opacity: 0;
 }
+
+.zip-header {
+    opacity: 0;
+}
+
+#zip-submit {
+    opacity: 0;
+}
