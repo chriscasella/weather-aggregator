@@ -18,6 +18,8 @@ app.service('WeatherService', ['$http', '$q', function($http, $q){
 }])
 
 app.controller('WeatherController', ['$scope', 'WeatherService', function ($scope, WeatherService){
+    $scope.zip = null;
+    
     $scope.init = function(){
         WeatherService.wunderGround().then(function(r){
             $scope.wunderground = r;

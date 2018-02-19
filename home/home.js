@@ -1,3 +1,5 @@
-app.controller('HomeController', ['$scope', function(){
-    
+app.controller('HomeController', ['$scope', '$rootScope', function ($scope, $rootScope ){
+
+    $rootScope.zip = null;
+
 }]);
