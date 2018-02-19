@@ -17,7 +17,7 @@ app.service('WeatherService', ['$http', '$q', function($http, $q){
 
 }])
 
-app.controller('WeatherController', ['$scope', 'WeatherService', function ($scope, WeatherService){
+app.controller('WeatherController', ['$scope', '$rootScope', 'WeatherService', function ($scope, $rootScope, WeatherService){
     $scope.zip = null;
     
     $scope.init = function(){
