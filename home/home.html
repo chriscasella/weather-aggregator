@@ -7,11 +7,15 @@
 <div class="row justify-content-center">
         <div class="zip-input col-5">
             <md-input-container class="md-block">
-                <label id="zip-label">Zip Code</label>
-                <input class="text-center"ng-model="zip">
+                <label 
+                    class="text-center" 
+                    id="zip-label"
+                >
+                Zip Code</label>
+                <input class="text-center" ng-model="zip">
             </md-input-container>
         </div>
 </div>
 <div class="row justify-content-center">
-    <md-button class="md-raised md-accent hue-2" id="zip-submit"> Go </md-button>
+    <md-button class="md-raised md-accent hue-2" id="zip-submit" ng-click="goTo('/weather');"> Go </md-button>
 </div>
