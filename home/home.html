@@ -12,10 +12,15 @@
                     id="zip-label"
                 >
                 Zip Code</label>
-                <input class="text-center" ng-model="zip">
+                <input class="text-center" ng-model="$root.zip">
             </md-input-container>
         </div>
 </div>
 <div class="row justify-content-center">
-    <md-button class="md-raised md-accent hue-2" id="zip-submit" ng-click="goTo('/weather');"> Go </md-button>
+    <md-button 
+        class="md-raised md-accent hue-2" 
+        id="zip-submit" 
+        ng-click="goTo('/weather');"
+        > Go 
+    </md-button>
 </div>
