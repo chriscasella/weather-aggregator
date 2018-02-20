@@ -12,7 +12,11 @@
                     id="zip-label"
                 >
                 Zip Code</label>
-                <input class="text-center" ng-model="$root.zip">
+                <input 
+                    class="text-center" 
+                    ng-model="$root.zip"
+                    ng-pattern="/^\d{5}(?:[-\s]\d{4})?$/"
+                >
             </md-input-container>
         </div>
 </div>
@@ -21,6 +25,7 @@
         class="md-raised md-accent hue-2" 
         id="zip-submit" 
         ng-click="goTo('/weather');"
+        ng-disabled="$root.zip == null"
         > Go 
     </md-button>
 </div>
