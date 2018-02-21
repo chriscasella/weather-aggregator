@@ -15,10 +15,14 @@ app.service('WeatherService', ['$http', '$q', function($http, $q){
         return deferred.promise;
     };
 
+    self.getWg
+
 }])
 
-app.controller('WeatherController', ['$scope', '$rootScope', 'WeatherService', function ($scope, $rootScope, WeatherService){
+app.controller('WeatherController', ['$scope', '$rootScope', 'WeatherService', 'WEATHERSOURCES', function ($scope, $rootScope, WeatherService, WEATHERSOURCES){
     this.zip = $rootScope.zip;
+    $scope.weatherSources = angular.copy(WEATHERSOURCES);
+    $scope.activeView = 'weather/wg/wg.html';
     $scope.closestStation = null;
     $scope.location = {
         city: null,
@@ -42,9 +46,21 @@ app.controller('WeatherController', ['$scope', '$rootScope', 'WeatherService', f
         // });
     };
 
-    $scope.getWG = function(){
-        
+    $scope.toggleActiveSource = function(sourceName){
+        var ws = $scope.weatherSources;
+        for(var i in ws){
+            if(ws[i].name == sourceName){
+                ws[i].active = true;
+                ws[i].class = 'active';
+                $scope.activeView = ws[i].abbr;
+            }else{
+                ws[i].active = false;
+                ws[i].class = '';
+            };
+        };
     };
-
+    $scope.consolethis = function(){
+        console.log('hi');
+    };
     $scope.init();
 }])

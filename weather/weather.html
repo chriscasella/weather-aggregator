@@ -20,12 +20,13 @@
         <p class="text-center">{{closestStation.city}}</p>
     </div>
 </div>
-<div ng-include="">
+<ng-include src="activeView"> 
+</ng-include>
 
+<div class="nav nav-pills nav-justified">
+    <md-button 
+        ng-click="toggleActiveSource(source.name);"
+        ng-repeat="source in weatherSources" 
+        class="nav-item nav-link {{source.class}}"
+    >{{ source.display }}</md-button>
 </div>
-<nav class="nav nav-pills nav-justified">
-    <a class="nav-item nav-link active" href="#">Active</a>
-    <a class="nav-item nav-link" href="#">Link</a>
-    <a class="nav-item nav-link" href="#">Link</a>
-    <a class="nav-item nav-link disabled" href="#">Disabled</a>
-</nav>
