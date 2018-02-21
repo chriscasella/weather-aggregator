@@ -1,1 +1,31 @@
-<h1>Hello World</h1>
+
+<div class="row justify-content-center">
+    <div class="zip-header col-5">
+        <h1 class="display-3"> Enter Zipcode </h1>
+    </div>
+</div>
+<div class="row justify-content-center">
+        <div class="zip-input col-5">
+            <md-input-container class="md-block">
+                <label 
+                    class="text-center" 
+                    id="zip-label"
+                >
+                Zip Code</label>
+                <input 
+                    class="text-center" 
+                    ng-model="$root.zip"
+                    ng-pattern="/^\d{5}(?:[-\s]\d{4})?$/"
+                >
+            </md-input-container>
+        </div>
+</div>
+<div class="row justify-content-center">
+    <md-button 
+        class="md-raised md-accent hue-2" 
+        id="zip-submit" 
+        ng-click="goTo('/weather');"
+        ng-disabled="$root.zip == null"
+        > Go 
+    </md-button>
+</div>

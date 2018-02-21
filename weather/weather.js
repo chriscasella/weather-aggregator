@@ -1,14 +1,14 @@
 app.service('WeatherService', ['$http', '$q', function($http, $q){
     var self = this;
 
-    self.wunderGround = function(){
+    self.getLocation = function(zip){
         var deferred = $q.defer();
         $http({
             method: 'GET',
-            url: ''
+            url: 'http://api.wunderground.com/api/ae33dd163de485d3/geolookup/q/' + zip + '.json'
         }).then(function(r){
             console.log('wunderground', r);
-            deferred.resolve(r);
+            deferred.resolve(r.data.location);
         }, function(err){
             deferred.reject('error', err)
         })
@@ -17,13 +17,33 @@ app.service('WeatherService', ['$http', '$q', function($http, $q){
 
 }])
 
-app.controller('WeatherController', ['$scope', 'WeatherService', function ($scope, WeatherService){
-    $scope.zip = null;
-    
+app.controller('WeatherController', ['$scope', '$rootScope', 'WeatherService', function ($scope, $rootScope, WeatherService){
+    this.zip = $rootScope.zip;
+    $scope.closestStation = null;
+    $scope.location = {
+        city: null,
+        country: null,
+        lat: null,
+        lon: null
+    }; ; //city, country_name country, icao,lat,lon
+
     $scope.init = function(){
-        WeatherService.wunderGround().then(function(r){
-            $scope.wunderground = r;
-        });
+        $scope.getLocation();
+    };
+
+    $scope.getLocation = function(){
+        // WeatherService.getLocation(this.zip).then(function (r) {
+        //     //console.log(r.nearby_weather_stations.airport.station[0].city)
+        //     $scope.closestStation = r.nearby_weather_stations.airport.station[0];
+        //     $scope.location.city = r.city;
+        //     $scope.location.country = r.country_name;
+        //     $scope.location.lat = r.lat;
+        //     $scope.location.lon = r.lon;
+        // });
+    };
+
+    $scope.getWG = function(){
+        
     };
 
     $scope.init();

@@ -1,0 +1,16 @@
+.zip-input{
+    margin-top: 275px;
+    opacity: 0;
+}
+
+#zip-label{
+    opacity: 0;
+}
+
+.zip-header {
+    opacity: 0;
+}
+
+#zip-submit {
+    opacity: 0;
+}
