@@ -1,11 +1,11 @@
-<div class="row" style="border-bottom: solid 2px;">
-    <div class="col">
+<div class="row " style="border-bottom: solid 1px;">
+    <div class="col-md" style="margin-top: 10px;">
         <span  class="align-middle">
             <i class="fas fa-home fa-lg float-left"></i>
             <p class="text-center">Current City</p>
         </span>
     </div>
-    <div class="col">
+    <div class="col-md" style="margin-top: 10px;">
         <span class="align-baseline">
             <i class="fas fa-map-marker-alt fa-lg float-left"></i>
             <p class="text-center">Closest Station</p>
@@ -13,10 +13,19 @@
     </div>
 </div>
 <div class="row">
-    <div class="col">
+    <div class="col-md">
         <p class="text-center">{{location.city}}, {{location.country}}</p>
     </div>
-    <div class="col">
+    <div class="col-md">
         <p class="text-center">{{closestStation.city}}</p>
     </div>
 </div>
+<div ng-include="">
+
+</div>
+<nav class="nav nav-pills nav-justified">
+    <a class="nav-item nav-link active" href="#">Active</a>
+    <a class="nav-item nav-link" href="#">Link</a>
+    <a class="nav-item nav-link" href="#">Link</a>
+    <a class="nav-item nav-link disabled" href="#">Disabled</a>
+</nav>
