@@ -20,17 +20,20 @@ app.service('WundergroundService', ['$http', '$q', function ($http, $q) {
 
     self.getCurrentForecast = function(lat, lon){
         var deferred = $q.defer();
-
-        $http({
-            method: 'GET',
-            url: 'http://api.wunderground.com/api/'+ key +'/forecast/q/' + lat + ',' + lon
-        }).then(function(res){
-            console.log(res);
-            self.currentForecast = res.data;
+        if(self.currentForecast == null){
+            $http({
+                method: 'GET',
+                url: 'http://api.wunderground.com/api/'+ key +'/conditions/q/' + lat + ',' + lon +'.json'
+            }).then(function(res){
+                console.log(res);
+                self.currentForecast = res.data.current_observation;
+                deferred.resolve(self.currentForecast);
+            }, function(err){
+                deferred.reject(err);
+            });
+        } else {
             deferred.resolve(self.currentForecast);
-        }, function(err){
-            deferred.reject(err);
-        });
+        };
 
         return deferred.promise;
     };

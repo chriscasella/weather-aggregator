@@ -10,3 +10,8 @@ app.constant('WEATHERSOURCES', [
     { name: 'National Weather Service', display: 'NWS', abbr: 'NWS', active: false, class: '', path: '/weather/nws/nws.html' },
     { name: 'WeatherBit.io', display: 'WeatherBit', abbr: 'WB', active: false, class: '', path: '/weather/wb/wb.html'}
 ]);
+
+app.constant('WEATHERICONS', [
+    { name: 'sunny', display: 'Sunny', icon: 'fas fa-sun'},
+    { name: 'overcast', display: 'Overcast/ Cloudy', icon: 'fas fa-cloud'}
+]);

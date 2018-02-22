@@ -1,6 +1,7 @@
 app.controller('WeatherController', ['$scope', '$rootScope', 'DarkSkyService', 'NationalWeatherService', 'WeatherBitService','WundergroundService', 'WEATHERSOURCES', 
     function ($scope, $rootScope, DarkSkyService, NationalWeatherService, WeatherBitService, WundergroundService, WEATHERSOURCES){
     this.zip = $rootScope.zip;
+    $scope.activeCtrl = 'WundergroundController';
     $scope.weatherSources = angular.copy(WEATHERSOURCES);
     $scope.location = {
         city: null,
@@ -8,6 +9,9 @@ app.controller('WeatherController', ['$scope', '$rootScope', 'DarkSkyService', '
         lat: null,
         lon: null
     }; ; //city, country_name country, icao,lat,lon
+    $scope.stationInfo = {
+        currentTemp: null
+    };
 
     $scope.init = function(){
         
@@ -28,6 +32,7 @@ app.controller('WeatherController', ['$scope', '$rootScope', 'DarkSkyService', '
     $scope.getWgCurrentForecast = function(lat, lon){
         WundergroundService.getCurrentForecast(lat, lon).then(function(r){
             $scope.wgCurrentForecast = r;
+            $scope.stationInfo.currentTemp = r.temp_f;
         });
     };
 

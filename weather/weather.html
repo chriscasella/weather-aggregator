@@ -1,4 +1,5 @@
-<div class="row " style="border-bottom: solid 1px;">
+<!-- getLocation() initialized in div below, multiple weather controllers caused it to fire multiple times -->
+<div class="row " style="border-bottom: solid 1px;" ng-init="getLocation();">
     <div class="col-md" style="margin-top: 10px;">
         <span  class="align-middle">
             <i class="fas fa-home fa-lg float-left"></i>
@@ -20,10 +21,11 @@
         <p class="text-center">{{closestStation.city}}</p>
     </div>
 </div>
-<!-- getLocation() initialized in div below, multiple weather controllers caused it to fire multiple times -->
-<div data-ng-controller="WeatherController as ctrl" ng-init="getLocation();">
+<!--
+<div data-ng-controller="WeatherController as ctrl">
     <station-carousel stations="ctrl.stations"></station-carousel>
-</div>
+</div> -->
+<station-detail ng-controller="WeatherController as ctrl" stationInfo="ctrl.stationInfo"
 <div class="nav nav-pills nav-justified">
     <md-button 
         ng-click="toggleActiveSource(source.name);"
