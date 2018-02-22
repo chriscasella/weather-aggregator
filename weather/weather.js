@@ -22,7 +22,7 @@ app.service('WeatherService', ['$http', '$q', function($http, $q){
 app.controller('WeatherController', ['$scope', '$rootScope', 'WeatherService', 'WEATHERSOURCES', function ($scope, $rootScope, WeatherService, WEATHERSOURCES){
     this.zip = $rootScope.zip;
     $scope.weatherSources = angular.copy(WEATHERSOURCES);
-    $scope.activeView = 'weather/wg/wg.html';
+    $scope.activeView = '/weather/wg/wg.html';
     $scope.closestStation = null;
     $scope.location = {
         city: null,

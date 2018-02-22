@@ -20,9 +20,9 @@
         <p class="text-center">{{closestStation.city}}</p>
     </div>
 </div>
-<ng-include src="activeView"> 
-</ng-include>
-
+<div ng-controller="WeatherController as ctrl">
+    <station-detail stationInfo="ctrl.stationInfo"></station-detail>
+</div>
 <div class="nav nav-pills nav-justified">
     <md-button 
         ng-click="toggleActiveSource(source.name);"

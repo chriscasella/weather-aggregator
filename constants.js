@@ -5,8 +5,8 @@ app.constant('ROUTES', {
 });
 
 app.constant('WEATHERSOURCES', [
-   {name: 'Weather Underground', display:'Wunderground', abbr:'WG', active: true, class: 'active', path:'weather/wg/wg.html'},
-    { name: 'Dark Sky', display: 'Dark Sky', abbr: 'DS', active: false, class: '', path: 'weather/ds/ds.html'},
-    { name: 'National Weather Service', display: 'NWS', abbr: 'NWS', active: false, class: '', path: 'weather/nws/nws.html' },
-    { name: 'WeatherBit.io', display: 'WeatherBit', abbr: 'WB', active: false, class: '', path: 'weather/wb/wb.html'}
+   {name: 'Weather Underground', display:'Wunderground', abbr:'WG', active: true, class: 'active', path:'/weather/wg/wg.html'},
+    { name: 'Dark Sky', display: 'Dark Sky', abbr: 'DS', active: false, class: '', path: '/weather/ds/ds.html'},
+    { name: 'National Weather Service', display: 'NWS', abbr: 'NWS', active: false, class: '', path: '/weather/nws/nws.html' },
+    { name: 'WeatherBit.io', display: 'WeatherBit', abbr: 'WB', active: false, class: '', path: '/weather/wb/wb.html'}
 ]);
