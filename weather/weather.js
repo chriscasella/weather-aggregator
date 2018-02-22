@@ -1,25 +1,5 @@
-app.service('WeatherService', ['$http', '$q', function($http, $q){
-    var self = this;
-
-    self.getLocation = function(zip){
-        var deferred = $q.defer();
-        $http({
-            method: 'GET',
-            url: 'http://api.wunderground.com/api/ae33dd163de485d3/geolookup/q/' + zip + '.json'
-        }).then(function(r){
-            console.log('wunderground', r);
-            deferred.resolve(r.data.location);
-        }, function(err){
-            deferred.reject('error', err)
-        })
-        return deferred.promise;
-    };
-
-
-}])
-
-app.controller('WeatherController', ['$scope', '$rootScope', 'DarkSkyService', 'NationalWeatherService', 'WeatherBitService', 'WeatherService','WundergroundService', 'WEATHERSOURCES', 
-    function ($scope, $rootScope, DarkSkyService, NationalWeatherService, WeatherBitService, WeatherService, WundergroundService, WEATHERSOURCES){
+app.controller('WeatherController', ['$scope', '$rootScope', 'DarkSkyService', 'NationalWeatherService', 'WeatherBitService','WundergroundService', 'WEATHERSOURCES', 
+    function ($scope, $rootScope, DarkSkyService, NationalWeatherService, WeatherBitService, WundergroundService, WEATHERSOURCES){
     this.zip = $rootScope.zip;
     $scope.weatherSources = angular.copy(WEATHERSOURCES);
     $scope.location = {
@@ -34,7 +14,7 @@ app.controller('WeatherController', ['$scope', '$rootScope', 'DarkSkyService', '
     };
 
     $scope.getLocation = function(){
-        // WeatherService.getLocation(this.zip).then(function (r) {
+        // WundergroundService.getLocation(this.zip).then(function (r) {
         //     //console.log(r.nearby_weather_stations.airport.station[0].city)
         //     $scope.closestStation = r.nearby_weather_stations.airport.station[0];
         //     $scope.location.city = r.city;
