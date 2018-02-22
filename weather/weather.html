@@ -20,7 +20,8 @@
         <p class="text-center">{{closestStation.city}}</p>
     </div>
 </div>
-<div ng-controller="WeatherController as ctrl">
+<!-- getLocation() initialized in div below, multiple weather controllers caused it to fire multiple times -->
+<div data-ng-controller="WeatherController as ctrl" ng-init="getLocation();">
     <station-carousel stations="ctrl.stations"></station-carousel>
 </div>
 <div class="nav nav-pills nav-justified">

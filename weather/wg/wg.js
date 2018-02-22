@@ -2,6 +2,8 @@ app.service('WundergroundService', ['$http', '$q', function ($http, $q) {
     var self = this;
     var key = wg_api_key;
 
+    var currentForecast = null;
+
     self.getLocation = function (zip) {
         var deferred = $q.defer();
         $http({
@@ -13,6 +15,23 @@ app.service('WundergroundService', ['$http', '$q', function ($http, $q) {
         }, function (err) {
             deferred.reject('error', err)
         })
+        return deferred.promise;
+    };
+
+    self.getCurrentForecast = function(lat, lon){
+        var deferred = $q.defer();
+
+        $http({
+            method: 'GET',
+            url: 'http://api.wunderground.com/api/'+ key +'/forecast/q/' + lat + ',' + lon
+        }).then(function(res){
+            console.log(res);
+            self.currentForecast = res.data;
+            deferred.resolve(self.currentForecast);
+        }, function(err){
+            deferred.reject(err);
+        });
+
         return deferred.promise;
     };
 }]);

@@ -10,18 +10,25 @@ app.controller('WeatherController', ['$scope', '$rootScope', 'DarkSkyService', '
     }; ; //city, country_name country, icao,lat,lon
 
     $scope.init = function(){
-        $scope.getLocation();
+        
     };
 
     $scope.getLocation = function(){
-        // WundergroundService.getLocation(this.zip).then(function (r) {
-        //     //console.log(r.nearby_weather_stations.airport.station[0].city)
-        //     $scope.closestStation = r.nearby_weather_stations.airport.station[0];
-        //     $scope.location.city = r.city;
-        //     $scope.location.country = r.country_name;
-        //     $scope.location.lat = r.lat;
-        //     $scope.location.lon = r.lon;
-        // });
+        WundergroundService.getLocation(this.zip).then(function (r) {
+            $scope.closestStation = r.nearby_weather_stations.airport.station[0];
+            $scope.location.city = r.city;
+            $scope.location.country = r.country_name;
+            $scope.location.lat = r.lat;
+            $scope.location.lon = r.lon;
+            //Fires Service
+            $scope.getWgCurrentForecast($scope.location.lat, $scope.location.lon);
+        });
+    };
+
+    $scope.getWgCurrentForecast = function(lat, lon){
+        WundergroundService.getCurrentForecast(lat, lon).then(function(r){
+            $scope.wgCurrentForecast = r;
+        });
     };
 
     $scope.toggleActiveSource = function(sourceName){
@@ -36,8 +43,8 @@ app.controller('WeatherController', ['$scope', '$rootScope', 'DarkSkyService', '
             };
         };
     };
-    $scope.consolethis = function(){
-        console.log('hi');
-    };
+    // $scope.consolethis = function(){
+    //     console.log('hi');
+    // };
     $scope.init();
 }])
