@@ -1,7 +1,8 @@
-app.controller('WeatherController', ['$scope', '$rootScope', 'DarkSkyService', 'NationalWeatherService', 'WeatherBitService','WundergroundService', 'WEATHERSOURCES', 
-    function ($scope, $rootScope, DarkSkyService, NationalWeatherService, WeatherBitService, WundergroundService, WEATHERSOURCES){
+app.controller('WeatherController', ['$scope', '$rootScope', 'DarkSkyService', 'NationalWeatherService', 'WeatherBitService', 'WundergroundService', 'WEATHERICONS', 'WEATHERSOURCES', 
+    function ($scope, $rootScope, DarkSkyService, NationalWeatherService, WeatherBitService, WundergroundService, WEATHERICONS, WEATHERSOURCES){
     var self = this;
     this.zip = $rootScope.zip;
+    $scope.weatherIcons = angular.copy(WEATHERICONS);
     $scope.activeCtrl = 'WundergroundController';
     $scope.weatherSources = angular.copy(WEATHERSOURCES);
     $scope.location = {
@@ -11,13 +12,25 @@ app.controller('WeatherController', ['$scope', '$rootScope', 'DarkSkyService', '
         lon: null
     }; ; //city, country_name country, icao,lat,lon
     $scope.stationInfo = {
-        currentTemp: null
+        currentTemp: null,
+        weatherIcon: null,
+        weatherDesc: null
     };
+    $scope.wgCurrentForecast = null;
 
     $scope.init = function(){
         
     };
-
+    //WunderGround Functions
+    $scope.wgSelectWeatherIcon = function(r){
+        var wi =  $scope.stationInfo.weatherIcon;
+        for(var i = 0; i < WEATHERICONS.length; i++){
+            if(WEATHERICONS[i].name == r){
+                console.log(WEATHERICONS[i], 'HIT!!!!');
+                wi  = $scope.weatherIcons[i].icon;
+            };
+        };
+    };
     $scope.getLocation = function(){
         WundergroundService.getLocation(this.zip).then(function (r) {
             $scope.closestStation = r.nearby_weather_stations.airport.station[0];
@@ -34,10 +47,15 @@ app.controller('WeatherController', ['$scope', '$rootScope', 'DarkSkyService', '
         WundergroundService.getCurrentForecast(lat, lon).then(function(r){
             $scope.wgCurrentForecast = r;
             $scope.stationInfo.currentTemp = r.temp_f;
+            $scope.stationInfo.weatherDesc = r.weather;
             console.log(r.temp_f, 'temp');
+            $scope.wgSelectWeatherIcon(r.weather);
         });
     };
+    //End Wunderground Functions
 
+
+    //View functions
     $scope.toggleActiveSource = function(sourceName){
         var ws = $scope.weatherSources;
         for(var i in ws){

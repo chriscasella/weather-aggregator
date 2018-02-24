@@ -12,6 +12,6 @@ app.constant('WEATHERSOURCES', [
 ]);
 
 app.constant('WEATHERICONS', [
-    { name: 'sunny', display: 'Sunny', icon: 'fas fa-sun'},
-    { name: 'overcast', display: 'Overcast/ Cloudy', icon: 'fas fa-cloud'}
+    { name: 'Sunny', display: 'Sunny', icon: 'fas fa-sun'},
+    { name: 'Overcast', display: 'Overcast/ Cloudy', icon: 'fas fa-cloud'}
 ]);

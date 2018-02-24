@@ -5,8 +5,16 @@
                 <h3>Current Weather</h3>
             </div>
             <div class="row justify-content-start" style="margin-top: 2%;">
-                <i class="currentWeatherIcon fas fa-sun fa-5x col"></i>
-                <h1 class="col-10"> {{stationInfo.currentTemp}} F</h1>
+                <!-- Weather Icons Begin -->
+                <span ng-if="stationInfo.weatherDesc == 'Sunny'">
+                    <md-icon md-font-icon="fas fa-sun fa-5x"></md-icon>
+                </span>
+                <span ng-if="stationInfo.weatherDesc == 'Overcast'">
+                    <md-icon md-font-icon="fas fa-cloud fa-5x"></md-icon>
+                </span>
+                <!-- Weather Icons End -->
+                <h1 class="col"> {{stationInfo.currentTemp}} F</h1>
+                <h1 >{{stationInfo.weatherDesc}}</h1>
             </div>
         </md-card-header-text>
     </md-card-header>
