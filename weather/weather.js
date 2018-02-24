@@ -78,6 +78,20 @@ app.controller('WeatherController', ['$scope', '$rootScope', 'DarkSkyService', '
         });
     };
     //End Dark Sky Functions 
+
+    //National Weather Service Functions 
+    $scope.nwsInit = function(){
+        $scope.getNwsCurrentForecast($scope.location.lat, $scope.location.lon);
+    };
+
+    $scope.getNwsCurrentForecast = function(lat, lon){
+        NationalWeatherService.getCurrentForecast(lat, lon).then(function(r){
+            $scope.stationInfo.currentTemp = r[0].temperature;
+            $scope.stationInfo.weatherDesc = r[0].shortForecast;
+        });
+    };
+
+    //End National Weather Service Functions 
     //View functions
     $scope.toggleActiveSource = function(sourceName){
         var ws = $scope.weatherSources;
@@ -97,13 +111,15 @@ app.controller('WeatherController', ['$scope', '$rootScope', 'DarkSkyService', '
 
     $scope.switchActiveSource = function(sourceName){
         if (sourceName == "DS"){
-                $scope.darkSkyInit();
+            $scope.darkSkyInit();
         } else if (sourceName == "WG"){
-                $scope.wgInit();
+            $scope.wgInit();
+        } else if (sourceName == "NWS"){
+            $scope.nwsInit();
         };
     };
     // $scope.consolethis = function(){
     //     console.log('hi');
     // };
     $scope.init();
-}])
+}]);
