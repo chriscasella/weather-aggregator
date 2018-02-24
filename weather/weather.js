@@ -19,7 +19,9 @@ app.controller('WeatherController', ['$scope', '$rootScope', 'DarkSkyService', '
 
     $scope.stationInfo = {
         currentTemp: null,
-        weatherDesc: null
+        weatherDesc: null,
+        windSpeed: null,
+        windDir: null
     };
 
     $scope.wgCurrentForecast = null;
@@ -59,6 +61,8 @@ app.controller('WeatherController', ['$scope', '$rootScope', 'DarkSkyService', '
             $scope.wgStationInfo.weatherDesc = r.weather;
             $scope.stationInfo.currentTemp = r.temp_f;
             $scope.stationInfo.weatherDesc = r.weather;
+            $scope.stationInfo.windSpeed = r.wind_mph;
+            $scope.stationInfo.windDir = r.wind_dir;
             console.log(r.temp_f, 'temp');
             $scope.wgSelectWeatherIcon(r.weather);
         });
@@ -73,6 +77,8 @@ app.controller('WeatherController', ['$scope', '$rootScope', 'DarkSkyService', '
         DarkSkyService.getCurrentForecast(lat, lon).then(function (r) {
             $scope.stationInfo.currentTemp = r.temperature;
             $scope.stationInfo.weatherDesc = r.summary;
+            $scope.stationInfo.windSpeed = r.windSpeed;
+            $scope.stationInfo.windDir = WundergroundService.currentForecast.wind_dir;
             console.log(r.temp_f, 'DakrSky temp');
             //apparentTemperature is 'feels like' in WG
         });
@@ -88,6 +94,8 @@ app.controller('WeatherController', ['$scope', '$rootScope', 'DarkSkyService', '
         NationalWeatherService.getCurrentForecast(lat, lon).then(function(r){
             $scope.stationInfo.weatherDesc = r[0].shortForecast;
             $scope.stationInfo.currentTemp = r[0].temperature;
+            $scope.stationInfo.windSpeed = r[0].windSpeed;
+            $scope.stationInfo.windDir = r[0].windDirection;
         });
     };
 
@@ -102,6 +110,8 @@ app.controller('WeatherController', ['$scope', '$rootScope', 'DarkSkyService', '
         WeatherBitService.getCurrentForecast(lat, lon).then(function (r) {
             $scope.stationInfo.currentTemp = r[0].temp;
             $scope.stationInfo.weatherDesc = r[0].weather.description;
+            $scope.stationInfo.windSpeed = r[0].wind_spd;
+            $scope.stationInfo.windDir = r[0].wind_cdir;
         });
     };
     
