@@ -11,19 +11,28 @@ app.controller('WeatherController', ['$scope', '$rootScope', 'DarkSkyService', '
         lat: null,
         lon: null
     }; ; //city, country_name country, icao,lat,lon
-    $scope.stationInfo = {
+    $scope.wgStationInfo = {
         currentTemp: null,
         weatherIcon: null,
         weatherDesc: null
     };
+
+    $scope.stationInfo = {
+        currentTemp: null,
+        weatherDesc: null
+    };
+
     $scope.wgCurrentForecast = null;
 
     $scope.init = function(){
         
     };
     //WunderGround Functions
+    $scope.wgInit = function(){
+        $scope.getWgCurrentForecast($scope.location.lat, $scope.location.lon);
+    };
     $scope.wgSelectWeatherIcon = function(r){
-        var wi =  $scope.stationInfo.weatherIcon;
+        var wi =  $scope.wgStationInfo.weatherIcon;
         for(var i = 0; i < WEATHERICONS.length; i++){
             if(WEATHERICONS[i].name == r){
                 console.log(WEATHERICONS[i], 'HIT!!!!');
@@ -46,6 +55,8 @@ app.controller('WeatherController', ['$scope', '$rootScope', 'DarkSkyService', '
     $scope.getWgCurrentForecast = function(lat, lon){
         WundergroundService.getCurrentForecast(lat, lon).then(function(r){
             $scope.wgCurrentForecast = r;
+            $scope.wgStationInfo.currentTemp = r.temp_f;
+            $scope.wgStationInfo.weatherDesc = r.weather;
             $scope.stationInfo.currentTemp = r.temp_f;
             $scope.stationInfo.weatherDesc = r.weather;
             console.log(r.temp_f, 'temp');
@@ -53,8 +64,20 @@ app.controller('WeatherController', ['$scope', '$rootScope', 'DarkSkyService', '
         });
     };
     //End Wunderground Functions
+    $scope.darkSkyInit = function(){
+        $scope.getDsCurrentForecast($scope.location.lat, $scope.location.lon);
+    };
 
-
+    //Dark Sky Functions
+    $scope.getDsCurrentForecast = function (lat, lon) {
+        DarkSkyService.getCurrentForecast(lat, lon).then(function (r) {
+            $scope.stationInfo.currentTemp = r.temperature;
+            $scope.stationInfo.weatherDesc = r.summary;
+            console.log(r.temp_f, 'DakrSky temp');
+            //apparentTemperature is 'feels like' in WG
+        });
+    };
+    //End Dark Sky Functions 
     //View functions
     $scope.toggleActiveSource = function(sourceName){
         var ws = $scope.weatherSources;
@@ -62,10 +85,21 @@ app.controller('WeatherController', ['$scope', '$rootScope', 'DarkSkyService', '
             if(ws[i].name == sourceName){
                 ws[i].active = true;
                 ws[i].class = 'active';
+                $scope.switchActiveSource(ws[i].abbr);
+                //switch statement for weather station
+                  
             }else{
                 ws[i].active = false;
                 ws[i].class = '';
             };
+        };
+    };
+
+    $scope.switchActiveSource = function(sourceName){
+        if (sourceName == "DS"){
+                $scope.darkSkyInit();
+        } else if (sourceName == "WG"){
+                $scope.wgInit();
         };
     };
     // $scope.consolethis = function(){

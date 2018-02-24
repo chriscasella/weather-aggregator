@@ -6,11 +6,14 @@
             </div>
             <div class="row justify-content-start" style="margin-top: 2%;">
                 <!-- Weather Icons Begin -->
-                <span ng-if="stationInfo.weatherDesc == 'Sunny'">
+                <span ng-if="wgStationInfo.weatherDesc == 'Sunny'">
                     <md-icon md-font-icon="fas fa-sun fa-5x"></md-icon>
                 </span>
-                <span ng-if="stationInfo.weatherDesc == 'Overcast'">
+                <span ng-if="wgStationInfo.weatherDesc == 'Overcast'">
                     <md-icon md-font-icon="fas fa-cloud fa-5x"></md-icon>
+                </span>
+                <span ng-if="wgStationInfo.weatherDesc == 'Fog'">
+                    <md-icon md-font-icon="fab fa-cloudversify fa-5x"></md-icon>
                 </span>
                 <!-- Weather Icons End -->
                 <h1 class="col"> {{stationInfo.currentTemp}} F</h1>
