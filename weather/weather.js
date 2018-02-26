@@ -14,12 +14,15 @@ app.controller('WeatherController', ['$scope', '$rootScope', 'DarkSkyService', '
     $scope.wgStationInfo = {
         currentTemp: null,
         weatherIcon: null,
-        weatherDesc: null
+        weatherDesc: null,
+        precipChance: null
     };
 
     $scope.stationInfo = {
         currentTemp: null,
-        weatherDesc: null
+        weatherDesc: null,
+        windSpeed: null,
+        windDir: null
     };
 
     $scope.wgCurrentForecast = null;
@@ -59,6 +62,8 @@ app.controller('WeatherController', ['$scope', '$rootScope', 'DarkSkyService', '
             $scope.wgStationInfo.weatherDesc = r.weather;
             $scope.stationInfo.currentTemp = r.temp_f;
             $scope.stationInfo.weatherDesc = r.weather;
+            $scope.stationInfo.windSpeed = r.wind_mph;
+            $scope.stationInfo.windDir = r.wind_dir;
             console.log(r.temp_f, 'temp');
             $scope.wgSelectWeatherIcon(r.weather);
         });
@@ -73,11 +78,45 @@ app.controller('WeatherController', ['$scope', '$rootScope', 'DarkSkyService', '
         DarkSkyService.getCurrentForecast(lat, lon).then(function (r) {
             $scope.stationInfo.currentTemp = r.temperature;
             $scope.stationInfo.weatherDesc = r.summary;
+            $scope.stationInfo.windSpeed = r.windSpeed;
+            $scope.stationInfo.windDir = WundergroundService.currentForecast.wind_dir;
             console.log(r.temp_f, 'DakrSky temp');
             //apparentTemperature is 'feels like' in WG
         });
     };
     //End Dark Sky Functions 
+
+    //National Weather Service Functions 
+    $scope.nwsInit = function(){
+        $scope.getNwsCurrentForecast($scope.location.lat, $scope.location.lon);
+    };
+
+    $scope.getNwsCurrentForecast = function(lat, lon){
+        NationalWeatherService.getCurrentForecast(lat, lon).then(function(r){
+            $scope.stationInfo.weatherDesc = r[0].shortForecast;
+            $scope.stationInfo.currentTemp = r[0].temperature;
+            $scope.stationInfo.windSpeed = r[0].windSpeed;
+            $scope.stationInfo.windDir = r[0].windDirection;
+        });
+    };
+
+    //End National Weather Service Functions 
+
+    //WeatherBit.io Functions
+    $scope.wbInit = function () {
+        $scope.getWbCurrentForecast($scope.location.lat, $scope.location.lon);
+    };
+
+    $scope.getWbCurrentForecast = function (lat, lon) {
+        WeatherBitService.getCurrentForecast(lat, lon).then(function (r) {
+            $scope.stationInfo.currentTemp = r[0].temp;
+            $scope.stationInfo.weatherDesc = r[0].weather.description;
+            $scope.stationInfo.windSpeed = r[0].wind_spd;
+            $scope.stationInfo.windDir = r[0].wind_cdir;
+        });
+    };
+    
+    //End WeatherBit.io Functions
     //View functions
     $scope.toggleActiveSource = function(sourceName){
         var ws = $scope.weatherSources;
@@ -97,13 +136,17 @@ app.controller('WeatherController', ['$scope', '$rootScope', 'DarkSkyService', '
 
     $scope.switchActiveSource = function(sourceName){
         if (sourceName == "DS"){
-                $scope.darkSkyInit();
+            $scope.darkSkyInit();
         } else if (sourceName == "WG"){
-                $scope.wgInit();
+            $scope.wgInit();
+        } else if (sourceName == "NWS"){
+            $scope.nwsInit();
+        } else if (sourceName == "WB"){
+            $scope.wbInit();
         };
     };
     // $scope.consolethis = function(){
     //     console.log('hi');
     // };
     $scope.init();
-}])
+}]);
