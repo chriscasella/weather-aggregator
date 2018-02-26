@@ -15,3 +15,7 @@ app.constant('WEATHERICONS', [
     { name: 'Sunny', display: 'Sunny', icon: 'fas fa-sun'},
     { name: 'Overcast', display: 'Overcast/ Cloudy', icon: 'fas fa-cloud'}
 ]);
+
+app.constant('WeatherControllers', {
+    wg:{controller:"WunderGroundController", service: "WundergroundService", html:"weather/wg/wg.html"}
+});

@@ -3,7 +3,8 @@ app.controller('WeatherController', ['$scope', '$rootScope', 'DarkSkyService', '
     var self = this;
     this.zip = $rootScope.zip;
     $scope.weatherIcons = angular.copy(WEATHERICONS);
-    $scope.activeCtrl = 'WundergroundController';
+    $scope.activeCtrl = 'wgController';
+    $scope.activeView = 'weather/wg/wg.html'
     $scope.weatherSources = angular.copy(WEATHERSOURCES);
     $scope.location = {
         city: null,
@@ -133,16 +134,20 @@ app.controller('WeatherController', ['$scope', '$rootScope', 'DarkSkyService', '
             };
         };
     };
-
+    
     $scope.switchActiveSource = function(sourceName){
         if (sourceName == "DS"){
             $scope.darkSkyInit();
+            $scope.activeCtrl ='dsController'
         } else if (sourceName == "WG"){
             $scope.wgInit();
+            $scope.activeCtrl ='wgController'
         } else if (sourceName == "NWS"){
             $scope.nwsInit();
+            $scope.activeCtrl ='nwsGroundController'
         } else if (sourceName == "WB"){
             $scope.wbInit();
+            $scope.activeCtrl ='wbController'
         };
     };
     // $scope.consolethis = function(){

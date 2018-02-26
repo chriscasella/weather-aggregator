@@ -26,10 +26,16 @@
     <station-carousel stations="ctrl.stations"></station-carousel>
 </div> -->
 <station-detail></station-detail>
-<div class="nav nav-pills nav-justified">
+<div class="nav nav-pills nav-justified"
+    style="margin-bottom: 10px; border-bottom: inset 5px;">
     <md-button 
         ng-click="toggleActiveSource(source.name);"
         ng-repeat="source in weatherSources" 
         class="nav-item nav-link {{source.class}}"
     >{{ source.display }}</md-button>
+</div>
+<div ng-switch="activeCtrl">
+    <div ng-switch-when="wgController">
+        <wg-details></wg-details>
+    </div>
 </div>
