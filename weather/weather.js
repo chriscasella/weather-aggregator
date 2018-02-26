@@ -67,6 +67,10 @@ app.controller('WeatherController', ['$scope', '$rootScope', 'DarkSkyService', '
             $scope.stationInfo.windDir = r.wind_dir;
             console.log(r.temp_f, 'temp');
             $scope.wgSelectWeatherIcon(r.weather);
+            //broadcast to directive
+            $rootScope.$broadcast('wgCurrentForecast', { 
+                forecast: [r] 
+            });
         });
     };
     //End Wunderground Functions

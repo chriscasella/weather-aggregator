@@ -1,9 +1,15 @@
 (function(){
 
-    app.controller('wgController', ['$scope', 'WunderGroundService', function ($scope, WunderGroundService){
+    app.controller('wgController', ['$scope', 'WundergroundService', function ($scope, WundergroundService){
+        $scope.currentForecast = null;
+        
         $scope.init = function(){
-            
         };
+        
+            $scope.$on('wgCurrentForecast', function (event, r) {
+                    $scope.currentForecast = r.forecast[0];
+                console.log(r.forecast[0]);
+            });
         $scope.init();
     }])
     

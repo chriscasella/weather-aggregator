@@ -1,1 +1,17 @@
-<h1>Hello Wolrd</h1>
+<div class="d-flex justify-content-center">
+    <div class="row">
+        <div class="col">
+            <h4>Precipitation this hour (inches):</h4>
+        </div>
+        <div class="col">
+            <h4>{{currentForecast.precip_1hr_in}}</h4>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <h4>
+                Total Precip Today: {{currentForecast.precip_today_in}} inches
+            </h4>
+        </div>
+    </div>
+</div>
