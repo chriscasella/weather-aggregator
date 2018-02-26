@@ -14,7 +14,8 @@ app.controller('WeatherController', ['$scope', '$rootScope', 'DarkSkyService', '
     $scope.wgStationInfo = {
         currentTemp: null,
         weatherIcon: null,
-        weatherDesc: null
+        weatherDesc: null,
+        precipChance: null
     };
 
     $scope.stationInfo = {

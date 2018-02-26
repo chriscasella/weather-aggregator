@@ -4,7 +4,7 @@
             <div class="header text-center" style="border-bottom: 1px solid;">
                 <h3>Current Weather</h3>
             </div>
-            <div class="row justify-content-start" style="margin-top: 2%;">
+            <div class="d-flex justify-content-center" style="margin-top: 2%;">
                 <!-- Weather Icons Begin -->
                 <span ng-if="wgStationInfo.weatherDesc == 'Sunny'">
                     <md-icon md-font-icon="fas fa-sun fa-5x"></md-icon>
@@ -16,14 +16,27 @@
                     <md-icon md-font-icon="fab fa-cloudversify fa-5x"></md-icon>
                 </span>
                 <!-- Weather Icons End -->
-                <h1 class="col"> {{stationInfo.currentTemp}} F</h1>
-                <h1 >{{stationInfo.weatherDesc}}</h1>
-                <h2>Wind Speed: {{stationInfo.windSpeed}}</h2>
-                <h2>Wind Direction: {{stationInfo.windDir}}</h2>
-            </div>
+                
+                    <h1 class="col font-weight-bold" 
+                        ng-class="stationInfo.currentTemp > 50 ? 'text-danger' :'text-info'">
+                         {{stationInfo.currentTemp}} F</h1>
+                    <h1 class="col">{{stationInfo.weatherDesc}}</h1>
+                </div>
+                
+                <div class="d-flex justify-content-center">
+                    <h2 class="col">Wind Speed: {{stationInfo.windSpeed}}</h2>
+                    <h2 class="col">Wind Direction: {{stationInfo.windDir}}</h2>
+                </div>
         </md-card-header-text>
     </md-card-header>
+    <!--
     <md-card-content>
-        <h1> Hello World</h1>
+        <div class="d-flex justify-content-center">
+            <div class="row">
+                <h3 class="col">Chance of Precipitation:{{stationInfo.precipChance}} %</h3>
+            </div>
+        </div>
     </md-card-content>
+-->
 </md-card>
+<div ng-include=""></div>
