@@ -1,3 +1,4 @@
+<br>
 <div class="d-flex justify-content-center">
     <div class="row">
         <div class="col">
@@ -13,5 +14,19 @@
                 Total Precip Today: {{currentForecast.precip_today_in}} inches
             </h4>
         </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <h4>Feels Like: {{currentForecast.feelslike_f}} °F</h4>
+        </div>
+    </div>
+</div>
+<br>
+<div class="row">
+    <div class="col">
+        Relative Humidity: {{currentForecast.relative_humidity}}%
+    </div>
+    <div class="col">
+        Visibility: {{currentForecast.visibility_mi}}
     </div>
 </div>
