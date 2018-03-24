@@ -18,3 +18,78 @@
 .nav-bottom-border {
     border-bottom: 5px solid hsl(201, 100%, 50%)
 }
+
+.weather-home-gif-1 {
+    background-image:url('home/background-pics/foggy.gif');
+    background-size:100%;
+    background-attachment: fixed;
+    height:100%;
+    width:100%;
+    min-height: 100%;
+    position: absolute;
+}
+
+.weather-home-gif-2 {
+    background-image:url('home/background-pics/ireland.gif');
+    background-size:100%;
+    background-attachment: fixed;
+    height:100%;
+    width:100%;
+    min-height: 100%;
+    position: absolute;
+}
+
+.weather-home-gif-3 {
+    background-image:url('home/background-pics/lake.gif');
+    background-size:100%;
+    background-attachment: fixed;
+    height:100%;
+    width:100%;
+    min-height: 100%;
+    position: absolute;
+}
+
+.weather-home-gif-4 {
+    background-image:url('home/background-pics/rain.gif');
+    background-size:100%;
+    background-attachment: fixed;
+    height:100%;
+    width:100%;
+    min-height: 100%;
+    position: absolute;
+}
+.weather-home-gif-5 {
+    background-image:url('home/background-pics/sky.gif');
+    background-size:100%;
+    background-attachment: fixed;
+    height:100%;
+    width:100%;
+    min-height: 100%;
+    position: absolute;
+}
+
+.weather-home-gif-6 {
+    background-image:url('home/background-pics/waterfall.gif');
+    background-size:100%;
+    background-attachment: fixed;
+    height:100%;
+    width:100%;
+    min-height: 100%;
+    position: absolute;
+}
+
+.weather-home-gif-7 {
+    background-image:url('home/background-pics/waterfall2.gif');
+    background-size:100%;
+    background-attachment: fixed;
+    height:100%;
+    width:100%;
+    min-height: 100%;
+    position: absolute;
+}
+
+.box-shadow-header {
+    -webkit-box-shadow: -2px 2px 28px 1px rgba(240, 41, 41, 0.774);
+    -moz-box-shadow: -2px 2px 28px 1px rgba(240, 41, 41, 0.774);
+    box-shadow: -2px 2px 28px 1px rgba(240, 41, 41, 0.774);
+}

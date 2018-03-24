@@ -1,7 +1,24 @@
-app.controller('HomeController', ['$scope', '$rootScope', function ($scope, $rootScope ){
+app.controller('HomeController', ['$scope', '$rootScope', '$location', 'WEATHERGIFS', function ($scope, $rootScope, $location, WEATHERGIFS){
+    
+    $scope.selectedGif = null;
+    $scope.weatherGifs = angular.copy(WEATHERGIFS);
+    var isInit = false;
+
     $scope.init= function(){
         $scope.animations();
+        $scope.selectBackgroundImg();
     };
+    $scope.selectBackgroundImg = function (){
+        var weatherGifs = $scope.weatherGifs;   
+        while(!isInit){
+            var randomNumber = Math.floor(Math.random() * weatherGifs.length);
+            isInit = true;
+           $scope.selectedGif = weatherGifs[randomNumber].class;
+        };
+        
+     };
+
+
     $rootScope.zip = null;
 
     // $scope.consoleThis = function(){
@@ -26,7 +43,7 @@ app.controller('HomeController', ['$scope', '$rootScope', function ($scope, $roo
         this.zipInputAnime = anime({
             targets: '.zip-input',
             easing: easeTime,
-            opacity: 1
+            opacity: .5
         });
 
         this.zipSubmitAnime = anime({

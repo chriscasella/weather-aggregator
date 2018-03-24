@@ -16,6 +16,16 @@ app.constant('WEATHERICONS', [
     { name: 'Overcast', display: 'Overcast/ Cloudy', icon: 'fas fa-cloud'}
 ]);
 
+app.constant('WEATHERGIFS', [
+    { class: 'weather-home-gif-1', credit:'BigMurph26'},
+    { class: 'weather-home-gif-2', credit: 'Samsara', link:'http://www.imdb.com/title/tt0770802/'},
+    { class: 'weather-home-gif-3', credit:''},
+    { class: 'weather-home-gif-4', credit:''},
+    { class: 'weather-home-gif-5', credit:''},
+    { class: 'weather-home-gif-6', credit:''},
+    { class: 'weather-home-gif-7', credit:''}
+]);
+
 app.constant('WeatherControllers', {
     wg:{controller:"WunderGroundController", service: "WundergroundService", html:"weather/wg/wg.html"}
 });
