@@ -14,3 +14,7 @@
 #zip-submit {
     opacity: 0;
 }
+
+.nav-bottom-border {
+    border-bottom: 5px solid hsl(201, 100%, 50%)
+}
