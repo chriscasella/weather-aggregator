@@ -89,7 +89,12 @@
 }
 
 .box-shadow-header {
-    -webkit-box-shadow: -2px 2px 28px 1px rgba(240, 41, 41, 0.774);
-    -moz-box-shadow: -2px 2px 28px 1px rgba(240, 41, 41, 0.774);
-    box-shadow: -2px 2px 28px 1px rgba(240, 41, 41, 0.774);
+    -webkit-box-shadow: -2px 2px 28px 1px rgba(0, 0, 0, 0.507);
+    -moz-box-shadow: -2px 2px 28px 1px rgba(0,0,0,0.75);
+    box-shadow: -2px 2px 28px 1px rgba(0,0,0,0.75);
+}
+
+.box-shadow-header-text {
+    color: deepskyblue;
+    text-shadow: 1.5px 1.5px #0000006e;
 }
