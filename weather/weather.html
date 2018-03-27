@@ -37,7 +37,7 @@
             class="nav-item nav-link {{source.class}}"
         >{{ source.display }}</md-button>
     </div>
-    <div ng-switch="activeCtrl">
+    <div ng-switch="activeCtrl" class="weather-station-background">
         <div ng-switch-when="wgController">
             <wg-details></wg-details>
         </div>

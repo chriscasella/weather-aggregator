@@ -21,71 +21,78 @@
 
 .weather-home-gif-1 {
     background-image:url('home/background-pics/foggy.gif');
-    background-size:100%;
+    background-size:120%;
     background-attachment: fixed;
     height:100%;
     width:100%;
     min-height: 100%;
     position: absolute;
+    background-repeat: no-repeat;
 }
 
 .weather-home-gif-2 {
     background-image:url('home/background-pics/ireland.gif');
-    background-size:100%;
+    background-size:120%;
     background-attachment: fixed;
     height:100%;
     width:100%;
     min-height: 100%;
     position: absolute;
+    background-repeat: no-repeat;
 }
 
 .weather-home-gif-3 {
     background-image:url('home/background-pics/lake.gif');
-    background-size:100%;
+    background-size:120%;
     background-attachment: fixed;
     height:100%;
     width:100%;
     min-height: 100%;
     position: absolute;
+    background-repeat: no-repeat;
 }
 
 .weather-home-gif-4 {
     background-image:url('home/background-pics/rain.gif');
-    background-size:100%;
+    background-size:120%;
     background-attachment: fixed;
     height:100%;
     width:100%;
     min-height: 100%;
     position: absolute;
+    background-repeat: no-repeat;
 }
 .weather-home-gif-5 {
     background-image:url('home/background-pics/sky.gif');
-    background-size:100%;
+    background-size:125%;
     background-attachment: fixed;
     height:100%;
     width:100%;
     min-height: 100%;
     position: absolute;
+    background-repeat: no-repeat;
 }
 
 .weather-home-gif-6 {
     background-image:url('home/background-pics/waterfall.gif');
-    background-size:100%;
+    background-size:150%;
     background-attachment: fixed;
     height:100%;
     width:100%;
     min-height: 100%;
     position: absolute;
+    background-repeat: no-repeat;
 }
 
 .weather-home-gif-7 {
     background-image:url('home/background-pics/waterfall2.gif');
-    background-size:100%;
+    background-size:120%;
     background-attachment: fixed;
     height:100%;
     width:100%;
     min-height: 100%;
     position: absolute;
+    background-repeat: no-repeat;
 }
 
 .box-shadow-header {
@@ -97,4 +104,8 @@
 .box-shadow-header-text {
     color: deepskyblue;
     text-shadow: 1.5px 1.5px #0000006e;
+}
+
+.weather-station-background{
+    color: hsl(274, 35%, 57%);
 }

@@ -1,22 +1,25 @@
 <br>
-<div class="d-flex justify-content-center">
-    <div class="row">
-        <div class="col">
-            <h4>Precipitation this hour (inches):</h4>
-        </div>
-        <div class="col">
-            <h4>{{currentForecast.precip_1hr_in}}</h4>
-        </div>
+<div class="container">
+    <div class="muted-text -text-center">
+        {{currentForecast.observation_time}}
     </div>
     <div class="row">
-        <div class="col">
+        <div class="col-md-3">
+            <h4>Precipitation this hour (inches):</h4>
+        </div>
+        <div class="col-md-3">
+            <h4>{{currentForecast.precip_1hr_in}}</h4>
+        </div>
+    
+    
+        <div class="col-md-3">
             <h4>
                 Total Precip Today: {{currentForecast.precip_today_in}} inches
             </h4>
         </div>
-    </div>
-    <div class="row">
-        <div class="col">
+    
+    
+        <div class="col-md-3">
             <h4>Feels Like: {{currentForecast.feelslike_f}} °F</h4>
         </div>
     </div>
@@ -24,7 +27,7 @@
 <br>
 <div class="row">
     <div class="col">
-        Relative Humidity: {{currentForecast.relative_humidity}}%
+        Relative Humidity: {{currentForecast.relative_humidity}}
     </div>
     <div class="col">
         Visibility: {{currentForecast.visibility_mi}}
